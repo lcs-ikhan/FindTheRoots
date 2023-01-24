@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RootsCalculatorView: View {
+    
+    
+    
     var body: some View {
         VStack{
             HStack{
@@ -29,8 +32,40 @@ struct RootsCalculatorView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width:250, height: 200)
+                
+                HStack(spacing: 100){
+                    Group{
+                       
+                        
+                        VStack {
+                            Text("a")
+                                    .font(.title2)
+                                .bold()
+                            
+                            
+                        }
+                            
+                        
+                        
+                        VStack {
+                            Text("b")
+                                .font(.title2)
+                            .bold()
+                        }
+                        
+                        VStack {
+                            Text("c")
+                                .font(.title2)
+                            .bold()
+                        }
+                        
+                    }
+                    
+                    
+                    
+                }
+                
             }
-            
         }
     }
 }
