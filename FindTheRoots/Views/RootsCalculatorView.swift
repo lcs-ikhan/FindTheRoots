@@ -9,9 +9,13 @@ import SwiftUI
 
 struct RootsCalculatorView: View {
     
+    @State var a: Double = 0
+    @State var b: Double = 0
+    @State  var c: Double = 0
     
     
     var body: some View {
+        
         VStack{
             HStack{
                 
@@ -33,36 +37,55 @@ struct RootsCalculatorView: View {
                     .scaledToFit()
                     .frame(width:250, height: 200)
                 
-                HStack(spacing: 100){
+                HStack{
                     Group{
-                       
+                        Spacer()
                         
                         VStack {
-                            Text("a")
-                                    .font(.title2)
+                            Text("\(a)")
                                 .bold()
                             
+                            Slider(value: $a,
+                                   in: -50...50,
+                                   label: { Text("a")})
+                            .frame(width:100)
+                                   
                             
                         }
+                        
+                        Spacer()
+                        
+                        VStack {
+                                Text("\(b)")
                             
-                        
-                        
-                        VStack {
-                            Text("b")
-                                .font(.title2)
-                            .bold()
+                            Slider(value: $b,
+                                   in: -50...50,
+                                   label: { Text("a") })
+                                .frame(width:100)
+                                   
+                            
+                          
                         }
                         
-                        VStack {
-                            Text("c")
-                                .font(.title2)
-                            .bold()
-                        }
+                        Spacer()
                         
+                        VStack {
+                                Text("\(c)")
+                            
+                            
+                            Slider(value: $b,
+                                   in: -50...50,
+                                   label: { Text("a") })
+                            .frame(width:100)
+                            
+                            
+                            
+                        }
+                        Spacer()
                     }
                     
                     
-                    
+                                   
                 }
                 
             }
