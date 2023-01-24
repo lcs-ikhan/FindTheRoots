@@ -42,7 +42,7 @@ struct RootsCalculatorView: View {
                         Spacer()
                         
                         VStack {
-                            Text("\(a)")
+                            Text("a")
                                 .bold()
                             
                             Slider(value: $a,
@@ -50,18 +50,22 @@ struct RootsCalculatorView: View {
                                    label: { Text("a")})
                             .frame(width:100)
                                    
-                            
+                            Text("\(b)")
                         }
                         
                         Spacer()
                         
                         VStack {
-                                Text("\(b)")
+                                Text("b")
+                                .bold()
+                            
                             
                             Slider(value: $b,
                                    in: -50...50,
                                    label: { Text("a") })
                                 .frame(width:100)
+                            
+                            Text("\(b)")
                                    
                             
                           
@@ -70,15 +74,15 @@ struct RootsCalculatorView: View {
                         Spacer()
                         
                         VStack {
-                                Text("\(c)")
-                            
+                                Text("c")
+                                .bold()
                             
                             Slider(value: $b,
                                    in: -50...50,
                                    label: { Text("a") })
                             .frame(width:100)
                             
-                            
+                            Text("\(c)")
                             
                         }
                         Spacer()
