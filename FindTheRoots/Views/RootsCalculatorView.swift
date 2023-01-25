@@ -13,6 +13,20 @@ struct RootsCalculatorView: View {
     @State var b: Double = 0
     @State  var c: Double = 0
     
+    var result: String {
+        let discriminant = b * b - 4 * a * c
+        
+        if discriminant < 0 {
+            return "No real roots."
+        } else {
+            let x1 = ( b * -1 - discriminant.squareRoot() ) / (2*a)
+            let x2 = (b * -1 + discriminant.squareRoot() ) / (2*a)
+            return "x ≈ \(x1.formatted(.number.precision(.fractionLength(2)))) and x ≈ \(x2.formatted(.number.precision(.fractionLength(2))))"
+        }
+        
+        
+    }
+    
     
     var body: some View {
         
@@ -25,7 +39,7 @@ struct RootsCalculatorView: View {
                 Spacer()
                 
             }
-            VStack(spacing: -50){
+            VStack(spacing: 0){
                 
                 Image("Quadratic Formula")
                     .resizable()
@@ -50,7 +64,7 @@ struct RootsCalculatorView: View {
                                    label: { Text("a")})
                             .frame(width:100)
                                    
-                            Text("\(b)")
+                            Text("\(a)")
                         }
                         
                         Spacer()
@@ -62,7 +76,7 @@ struct RootsCalculatorView: View {
                             
                             Slider(value: $b,
                                    in: -50...50,
-                                   label: { Text("a") })
+                                   label: { Text("b") })
                                 .frame(width:100)
                             
                             Text("\(b)")
@@ -77,9 +91,9 @@ struct RootsCalculatorView: View {
                                 Text("c")
                                 .bold()
                             
-                            Slider(value: $b,
+                            Slider(value: $c,
                                    in: -50...50,
-                                   label: { Text("a") })
+                                   label: { Text("c") })
                             .frame(width:100)
                             
                             Text("\(c)")
@@ -87,12 +101,23 @@ struct RootsCalculatorView: View {
                         }
                         Spacer()
                     }
+                    .font(Font.custom("Times New Roman",
+                                         size: 24.0,
+                                         relativeTo: .body))
                     
+                   
                     
                                    
                 }
                 
+                Text("x ≈ \(result)")
+
+                Spacer()
+              
+              
+                    
             }
+            
         }
     }
 }
