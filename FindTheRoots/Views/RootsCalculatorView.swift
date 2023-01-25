@@ -14,6 +14,9 @@ struct RootsCalculatorView: View {
     @State  var c: Double = 0
     @State var desiredPrecision: Double = 1
     
+    // List of prior results
+        @State var priorResults: [Result] = []
+    
     var result: String {
         let discriminant = b * b - 4 * a * c
         
@@ -106,7 +109,7 @@ struct RootsCalculatorView: View {
                                          size: 24.0,
                                          relativeTo: .body))
                     
-                   
+                    
                     
                                    
                 }
@@ -118,16 +121,21 @@ struct RootsCalculatorView: View {
               
               
                     
-            }
-            Group{
-                Stepper("Precision",
-                        value: $desiredPrecision,
-                        in: 0...6)
-                // Show precision
-                Text("\(desiredPrecision.formatted(.number.precision(.fractionLength(0))))")
-                    .font(.title2)
+            
                 
             }
+            Button(action: {
+                let latestResult = Result(a: a,
+                                          b: b,
+                                          c: c,
+                                          roots: result)
+                priorResults.append(latestResult)
+                
+            }, label: {
+                Text("Save Result")
+            } )
+            .buttonStyle(.bordered)
+            .padding()
             
         }
     }
