@@ -12,6 +12,7 @@ struct RootsCalculatorView: View {
     @State var a: Double = 0
     @State var b: Double = 0
     @State  var c: Double = 0
+    @State var desiredPrecision: Double = 1
     
     var result: String {
         let discriminant = b * b - 4 * a * c
@@ -64,7 +65,7 @@ struct RootsCalculatorView: View {
                                    label: { Text("a")})
                             .frame(width:100)
                                    
-                            Text("\(a)")
+                            Text("\(a.formatted(.number.precision(.fractionLength(Int(desiredPrecision)))))")
                         }
                         
                         Spacer()
@@ -79,7 +80,7 @@ struct RootsCalculatorView: View {
                                    label: { Text("b") })
                                 .frame(width:100)
                             
-                            Text("\(b)")
+                            Text("\(b.formatted(.number.precision(.fractionLength(Int(desiredPrecision)))))")
                                    
                             
                           
@@ -96,7 +97,7 @@ struct RootsCalculatorView: View {
                                    label: { Text("c") })
                             .frame(width:100)
                             
-                            Text("\(c)")
+                            Text("\(c.formatted(.number.precision(.fractionLength(Int(desiredPrecision)))))")
                             
                         }
                         Spacer()
@@ -111,11 +112,21 @@ struct RootsCalculatorView: View {
                 }
                 
                 Text("x ≈ \(result)")
+                    .font(.title2)
 
                 Spacer()
               
               
                     
+            }
+            Group{
+                Stepper("Precision",
+                        value: $desiredPrecision,
+                        in: 0...6)
+                // Show precision
+                Text("\(desiredPrecision.formatted(.number.precision(.fractionLength(0))))")
+                    .font(.title2)
+                
             }
             
         }
