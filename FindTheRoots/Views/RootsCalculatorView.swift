@@ -48,12 +48,12 @@ struct RootsCalculatorView: View {
                 Image("Quadratic Formula")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:300, height: 200)
+             
                 
                 Image("Quadratic")
                     .resizable()
                     .scaledToFit()
-                    .frame(width:250, height: 200)
+                   
                 
                 HStack{
                     Spacer()
